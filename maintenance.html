@@ -26,20 +26,11 @@
       background: radial-gradient(ellipse at 50% 40%, #1c2220 0, #111514 66%);
     }
     .brand {
-      display: flex;
-      align-items: center;
-      gap: 14px;
       width: fit-content;
       font-size: 18px;
       line-height: 1.2;
       font-weight: 700;
       letter-spacing: .15em;
-    }
-    .brand-separator {
-      width: 1px;
-      height: 24px;
-      background: #b9b9ac;
-      transform: rotate(12deg);
     }
     main {
       width: 100%;
@@ -113,7 +104,7 @@
       text-align: center;
     }
     @media (max-width: 480px) {
-      .brand { gap: 12px; font-size: 16px; }
+      .brand { font-size: 16px; }
       main { padding: 60px 0; }
       .accent { margin-bottom: 28px; }
       .description { margin-top: 20px; }
@@ -126,12 +117,10 @@
     }
   </style>
 </head>
-<body data-deployment-id="r20261106-02">
+<body data-deployment-id="r20261106-03">
   <div class="page">
     <header>
-      <div class="brand" aria-label="LEGAL PRO">
-        <span>LEGAL</span><span class="brand-separator" aria-hidden="true"></span><span>PRO</span>
-      </div>
+      <div class="brand">LEGAL | PRO</div>
     </header>
     <main>
       <div class="accent" aria-hidden="true"></div>
