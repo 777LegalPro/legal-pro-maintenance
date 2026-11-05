@@ -4,136 +4,288 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="noindex, nofollow">
-  <meta name="theme-color" content="#111514">
+  <meta name="theme-color" content="#101516">
   <title>Технические работы | LEGAL | PRO</title>
   <style>
+    @font-face {
+      font-family: Montserrat;
+      src: url('/assets/Montserrat.woff') format('woff'),
+           url('/assets/Montserrat.ttf') format('truetype');
+      font-display: swap;
+    }
     :root {
       color-scheme: dark;
-      font-family: Arial, Helvetica, sans-serif;
-      color: #f3f1eb;
-      background: #111514;
+      font-family: Montserrat, "Noto Sans Arabic", "Noto Sans CJK SC", sans-serif;
+      color: #eaf0ee;
+      background: #101516;
       -webkit-text-size-adjust: 100%;
       text-size-adjust: 100%;
     }
     * { box-sizing: border-box; }
-    body { margin: 0; }
-    .page {
+    body {
+      margin: 0;
+      min-width: 320px;
       min-height: 100vh;
       min-height: 100svh;
-      display: grid;
-      grid-template-rows: auto 1fr auto;
-      padding: clamp(24px, 4vw, 56px);
-      background: radial-gradient(ellipse at 50% 40%, #1c2220 0, #111514 66%);
+      font-family: inherit;
     }
+    a { color: inherit; }
+    a:focus-visible {
+      outline: 3px solid #eaf0ee;
+      outline-offset: 5px;
+    }
+    .container {
+      width: calc(100% - 2 * clamp(20px, 4vw, 64px));
+      max-width: 1320px;
+      margin-inline: auto;
+    }
+    .site-header { padding-block: 25px; }
     .brand {
       width: fit-content;
-      font-size: 18px;
-      line-height: 1.2;
+      font-size: 19px;
       font-weight: 700;
-      letter-spacing: .15em;
+      line-height: 1.3;
+      letter-spacing: .13em;
+      white-space: nowrap;
     }
-    main {
+    .hero {
+      position: relative;
+      isolation: isolate;
+      min-height: 510px;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+    }
+    .hero-picture,
+    .hero-picture img {
+      position: absolute;
+      inset: 0;
       width: 100%;
-      max-width: 900px;
-      margin: auto;
-      padding: 72px 0 80px;
-      text-align: center;
+      height: 100%;
     }
-    .accent {
-      width: 52px;
-      height: 2px;
-      margin: 0 auto 32px;
-      background: #c6c2b5;
+    .hero-picture { z-index: -2; }
+    .hero-picture img {
+      display: block;
+      object-fit: cover;
+      object-position: center;
+    }
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+      background:
+        linear-gradient(90deg, rgba(16, 21, 22, .84) 0%,
+          rgba(16, 21, 22, .69) 35%, rgba(16, 21, 22, .18) 70%,
+          rgba(16, 21, 22, .08) 100%),
+        linear-gradient(0deg, #101516 0%, rgba(16, 21, 22, .35) 13%,
+          rgba(16, 21, 22, 0) 34%);
+    }
+    .hero-content {
+      max-width: 570px;
+      padding-block: 54px 70px;
     }
     h1 {
+      max-width: 14ch;
       margin: 0;
-      font-size: clamp(36px, 7.2vw, 88px);
-      line-height: 1.08;
+      font-size: clamp(34px, 4vw, 56px);
       font-weight: 600;
-      letter-spacing: -.035em;
-      overflow-wrap: normal;
-    }
-    h1 span { display: block; }
-    .description {
-      margin: 24px 0 0;
-      color: #c5c9c3;
-      font-size: clamp(18px, 2.4vw, 23px);
-      line-height: 1.55;
-    }
-    .contact {
-      width: min(100%, 480px);
-      margin: 44px auto 0;
-      padding-top: 32px;
-      border-top: 1px solid #414743;
-    }
-    .contact p {
-      max-width: 360px;
-      margin: 0 auto 20px;
-      color: #c5c9c3;
-      font-size: 16px;
-      line-height: 1.6;
+      line-height: 1.13;
+      letter-spacing: -.025em;
       text-wrap: balance;
     }
-    .email {
+    .description {
+      margin: 19px 0 0;
+      font-size: clamp(18px, 1.65vw, 21px);
+      line-height: 1.6;
+    }
+    .contact { margin-top: 33px; }
+    .contact p {
+      max-width: 365px;
+      margin: 0 0 18px;
+      font-size: 15px;
+      line-height: 1.7;
+      text-wrap: balance;
+    }
+    .email-primary {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 24px;
-      min-height: 62px;
+      min-height: 54px;
       max-width: 100%;
-      padding: 16px 28px;
-      border: 1px solid #d4d0c4;
+      padding: 14px 23px;
+      border: 1px solid #64d9cd;
       border-radius: 4px;
-      background: #e4e0d5;
-      color: #111514;
-      font-size: clamp(20px, 3vw, 25px);
-      line-height: 1.2;
-      font-weight: 700;
+      color: #101516;
+      background: #64d9cd;
+      font-size: 20px;
+      font-weight: 600;
+      line-height: 1.3;
       text-decoration: none;
       white-space: nowrap;
       transition: background-color .15s ease, border-color .15s ease;
     }
-    .email:hover { background: #f6f3e9; border-color: #f6f3e9; }
-    .email:focus-visible { outline: 3px solid #f3f1eb; outline-offset: 6px; }
-    .email-arrow { font-size: 24px; font-weight: 400; }
-    footer {
-      color: #a4aba3;
-      font-size: 13px;
-      line-height: 1.4;
-      letter-spacing: .08em;
-      text-align: center;
+    .email-primary:hover {
+      border-color: #8ae5dc;
+      background: #8ae5dc;
     }
-    @media (max-width: 480px) {
-      .brand { font-size: 16px; }
-      main { padding: 60px 0; }
-      .accent { margin-bottom: 28px; }
-      .description { margin-top: 20px; }
-      .contact { margin-top: 34px; padding-top: 26px; }
-      .contact p { font-size: 15px; }
-      .email { width: 100%; gap: 18px; padding: 16px 20px; }
+    .translations {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 28px;
+      padding-block: 34px 48px;
+      border-top: 1px solid #344244;
+    }
+    .translation {
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      text-align: start;
+    }
+    .language-name {
+      margin: 0 0 10px;
+      color: #64d9cd;
+      font-size: 12px;
+      line-height: 1.5;
+      letter-spacing: .05em;
+    }
+    .translation h2 {
+      min-height: 2.8em;
+      margin: 0 0 10px;
+      font-size: 17px;
+      font-weight: 600;
+      line-height: 1.4;
+    }
+    .translation-description {
+      min-height: 3.2em;
+      margin: 0 0 17px;
+      font-size: 15px;
+      line-height: 1.6;
+    }
+    .translation-contact {
+      flex-grow: 1;
+      margin: 0 0 12px;
+      color: #bdcac7;
+      font-size: 14px;
+      line-height: 1.65;
+    }
+    .email-secondary {
+      display: inline-block;
+      max-width: 100%;
+      font-size: 15px;
+      font-weight: 500;
+      line-height: 1.6;
+      text-decoration-color: #647673;
+      text-underline-offset: 5px;
+      white-space: nowrap;
+    }
+    .email-secondary:hover { text-decoration-color: #64d9cd; }
+    .translation:lang(ar) .language-name,
+    .translation:lang(zh) .language-name { letter-spacing: normal; }
+    .translation:lang(ar) .translation-contact { line-height: 1.8; }
+    @media (max-width: 1199px) {
+      .translations { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px; }
+    }
+    @media (max-width: 849px) {
+      .hero { min-height: 500px; }
+      .hero-content { max-width: 470px; }
+      .translations { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+    @media (max-width: 599px) {
+      .site-header { padding-block: 22px; }
+      .brand { font-size: 17px; }
+      .hero { min-height: 610px; align-items: flex-start; }
+      .hero-content { max-width: 100%; padding-block: 40px 225px; }
+      .hero::before {
+        background:
+          linear-gradient(180deg, rgba(16, 21, 22, .82) 0%,
+            rgba(16, 21, 22, .66) 45%, rgba(16, 21, 22, .12) 74%,
+            rgba(16, 21, 22, .12) 100%),
+          linear-gradient(0deg, #101516 0%, rgba(16, 21, 22, 0) 22%);
+      }
+      .description { margin-top: 16px; }
+      .contact { margin-top: 27px; }
+      .contact p { max-width: 310px; }
+      .email-primary { font-size: 19px; }
+      .translations { padding-block: 30px 40px; }
+    }
+    @media (max-width: 519px) {
+      .translations { grid-template-columns: minmax(0, 1fr); gap: 27px; }
+      .translation:not(:first-child) { padding-top: 26px; border-top: 1px solid #344244; }
+      .translation h2 { min-height: 0; }
+      .translation-description { min-height: 0; margin-bottom: 13px; }
+      .translation-contact { flex-grow: 0; }
     }
     @media (prefers-reduced-motion: reduce) {
-      .email { transition: none; }
+      .email-primary { transition: none; }
     }
   </style>
 </head>
-<body data-deployment-id="r20261106-03">
-  <div class="page">
-    <header>
+<body data-deployment-id="r20261106-04">
+  <header class="site-header">
+    <div class="container">
       <div class="brand">LEGAL | PRO</div>
-    </header>
-    <main>
-      <div class="accent" aria-hidden="true"></div>
-      <h1><span>Технические</span><span>работы</span></h1>
-      <p class="description">Мы обновляем сайт.</p>
-      <section class="contact" aria-label="Бесплатная юридическая помощь">
-        <p>По вопросам бесплатной юридической помощи</p>
-        <a class="email" href="mailto:777@prolg.ru" aria-label="Написать на 777@prolg.ru">
-          <span>777@prolg.ru</span><span class="email-arrow" aria-hidden="true">↗</span>
-        </a>
+    </div>
+  </header>
+  <main>
+    <section class="hero" aria-labelledby="maintenance-ru">
+      <picture class="hero-picture" aria-hidden="true">
+        <source media="(max-width: 599px)" srcset="/assets/tyumen-illustration-mobile.webp" type="image/webp">
+        <source srcset="/assets/tyumen-illustration.webp" type="image/webp">
+        <img src="/assets/tyumen-illustration.png" alt="" width="2172" height="724" decoding="async" fetchpriority="high">
+      </picture>
+      <div class="container">
+        <div class="hero-content">
+          <h1 id="maintenance-ru">Технические работы</h1>
+          <p class="description">Мы обновляем сайт.</p>
+          <section class="contact" aria-label="Бесплатная юридическая помощь">
+            <p>По вопросам бесплатной юридической помощи:</p>
+            <a class="email-primary" href="mailto:777@prolg.ru" aria-label="Написать на 777@prolg.ru">777@prolg.ru</a>
+          </section>
+        </div>
+      </div>
+    </section>
+    <div class="container">
+      <section class="translations" aria-label="Информация на других языках">
+        <section class="translation" lang="en" dir="ltr" aria-labelledby="maintenance-en">
+          <p class="language-name">English</p>
+          <h2 id="maintenance-en">Website maintenance</h2>
+          <p class="translation-description">We’re updating the website.</p>
+          <p class="translation-contact">For inquiries about free legal assistance:</p>
+          <a class="email-secondary" href="mailto:777@prolg.ru">777@prolg.ru</a>
+        </section>
+        <section class="translation" lang="fr" dir="ltr" aria-labelledby="maintenance-fr">
+          <p class="language-name">Français</p>
+          <h2 id="maintenance-fr">Maintenance du site</h2>
+          <p class="translation-description">Nous mettons le site à jour.</p>
+          <p class="translation-contact">Pour toute demande d’aide juridique gratuite&nbsp;:</p>
+          <a class="email-secondary" href="mailto:777@prolg.ru">777@prolg.ru</a>
+        </section>
+        <section class="translation" lang="es" dir="ltr" aria-labelledby="maintenance-es">
+          <p class="language-name">Español</p>
+          <h2 id="maintenance-es">Mantenimiento del sitio</h2>
+          <p class="translation-description">Estamos actualizando el sitio web.</p>
+          <p class="translation-contact">Para consultas sobre asistencia jurídica gratuita:</p>
+          <a class="email-secondary" href="mailto:777@prolg.ru">777@prolg.ru</a>
+        </section>
+        <section class="translation" lang="ar" dir="rtl" aria-labelledby="maintenance-ar">
+          <p class="language-name">العربية</p>
+          <h2 id="maintenance-ar">الموقع قيد الصيانة</h2>
+          <p class="translation-description">نعمل على تحديث الموقع.</p>
+          <p class="translation-contact">للاستفسار عن المساعدة القانونية المجانية:</p>
+          <a class="email-secondary" href="mailto:777@prolg.ru"><bdi dir="ltr">777@prolg.ru</bdi></a>
+        </section>
+        <section class="translation" lang="zh-Hans" dir="ltr" aria-labelledby="maintenance-zh">
+          <p class="language-name">中文</p>
+          <h2 id="maintenance-zh">网站维护中</h2>
+          <p class="translation-description">我们正在更新网站。</p>
+          <p class="translation-contact">免费法律援助咨询：</p>
+          <a class="email-secondary" href="mailto:777@prolg.ru">777@prolg.ru</a>
+        </section>
       </section>
-    </main>
-    <footer>prolg.ru</footer>
-  </div>
+    </div>
+  </main>
 </body>
 </html>
