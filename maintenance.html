@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#111514">
+  <title>Технические работы | LEGAL | PRO</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      font-family: Arial, Helvetica, sans-serif;
+      color: #f3f1eb;
+      background: #111514;
+      -webkit-text-size-adjust: 100%;
+      text-size-adjust: 100%;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; }
+    .page {
+      min-height: 100vh;
+      min-height: 100svh;
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+      padding: clamp(24px, 4vw, 56px);
+      background: radial-gradient(ellipse at 50% 40%, #1c2220 0, #111514 66%);
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      width: fit-content;
+      font-size: 18px;
+      line-height: 1.2;
+      font-weight: 700;
+      letter-spacing: .15em;
+    }
+    .brand-separator {
+      width: 1px;
+      height: 24px;
+      background: #b9b9ac;
+      transform: rotate(12deg);
+    }
+    main {
+      width: 100%;
+      max-width: 900px;
+      margin: auto;
+      padding: 72px 0 80px;
+      text-align: center;
+    }
+    .accent {
+      width: 52px;
+      height: 2px;
+      margin: 0 auto 32px;
+      background: #c6c2b5;
+    }
+    h1 {
+      margin: 0;
+      font-size: clamp(36px, 7.2vw, 88px);
+      line-height: 1.08;
+      font-weight: 600;
+      letter-spacing: -.035em;
+      overflow-wrap: normal;
+    }
+    h1 span { display: block; }
+    .description {
+      margin: 24px 0 0;
+      color: #c5c9c3;
+      font-size: clamp(18px, 2.4vw, 23px);
+      line-height: 1.55;
+    }
+    .contact {
+      width: min(100%, 480px);
+      margin: 44px auto 0;
+      padding-top: 32px;
+      border-top: 1px solid #414743;
+    }
+    .contact p {
+      max-width: 360px;
+      margin: 0 auto 20px;
+      color: #c5c9c3;
+      font-size: 16px;
+      line-height: 1.6;
+      text-wrap: balance;
+    }
+    .email {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 24px;
+      min-height: 62px;
+      max-width: 100%;
+      padding: 16px 28px;
+      border: 1px solid #d4d0c4;
+      border-radius: 4px;
+      background: #e4e0d5;
+      color: #111514;
+      font-size: clamp(20px, 3vw, 25px);
+      line-height: 1.2;
+      font-weight: 700;
+      text-decoration: none;
+      white-space: nowrap;
+      transition: background-color .15s ease, border-color .15s ease;
+    }
+    .email:hover { background: #f6f3e9; border-color: #f6f3e9; }
+    .email:focus-visible { outline: 3px solid #f3f1eb; outline-offset: 6px; }
+    .email-arrow { font-size: 24px; font-weight: 400; }
+    footer {
+      color: #a4aba3;
+      font-size: 13px;
+      line-height: 1.4;
+      letter-spacing: .08em;
+      text-align: center;
+    }
+    @media (max-width: 480px) {
+      .brand { gap: 12px; font-size: 16px; }
+      main { padding: 60px 0; }
+      .accent { margin-bottom: 28px; }
+      .description { margin-top: 20px; }
+      .contact { margin-top: 34px; padding-top: 26px; }
+      .contact p { font-size: 15px; }
+      .email { width: 100%; gap: 18px; padding: 16px 20px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .email { transition: none; }
+    }
+  </style>
+</head>
+<body data-deployment-id="r20261106-01">
+  <div class="page">
+    <header>
+      <div class="brand" aria-label="LEGAL PRO">
+        <span>LEGAL</span><span class="brand-separator" aria-hidden="true"></span><span>PRO</span>
+      </div>
+    </header>
+    <main>
+      <div class="accent" aria-hidden="true"></div>
+      <h1><span>Технические</span><span>работы</span></h1>
+      <p class="description">Мы обновляем сайт.</p>
+      <section class="contact" aria-label="Бесплатная юридическая помощь">
+        <p>По вопросам бесплатной юридической помощи</p>
+        <a class="email" href="mailto:777@prolg.ru" aria-label="Написать на 777@prolg.ru">
+          <span>777@prolg.ru</span><span class="email-arrow" aria-hidden="true">↗</span>
+        </a>
+      </section>
+    </main>
+    <footer>prolg.ru</footer>
+  </div>
+</body>
+</html>
