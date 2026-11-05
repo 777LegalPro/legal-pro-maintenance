@@ -1,0 +1,21 @@
+import {readFileSync,writeFileSync,readdirSync,statSync} from 'node:fs';
+import {createHash} from 'node:crypto';
+import {fileURLToPath} from 'node:url';
+import path from 'node:path';
+const args=Object.fromEntries(process.argv.slice(2).reduce((pairs,v,i,a)=>i%2===0?[...pairs,[v,a[i+1]]]:pairs,[]));
+for(const key of ['--base','--release','--output'])if(!args[key])throw Error('Required: --base fresh-deploy.json --release UNIQUE_ID --output candidate.json');
+const base=JSON.parse(readFileSync(args['--base'],'utf8'));
+if(base.schema_version!==1||base.maintenance!==true||!base.release_id)throw Error('Unexpected deployment state; review before proceeding');
+if(args['--release']===base.release_id)throw Error('New release id must differ');
+const hash=b=>createHash('sha256').update(b).digest('hex');
+if(hash(Buffer.from(base.maintenance_html_base64,'base64'))!==base.maintenance_html_sha256)throw Error('Maintenance checksum mismatch');
+const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'../dist/client');
+const list=[];
+function scan(dir){for(const name of readdirSync(dir)){const p=path.join(dir,name);if(statSync(p).isDirectory())scan(p);else list.push(p);}}
+scan(path.join(root,'prototypes'));
+list.sort((a,b)=>Number(a.endsWith('index.html'))-Number(b.endsWith('index.html'))||a.localeCompare(b));
+let total=0;const files=list.map(p=>{const b=readFileSync(p);total+=b.length;if(b.length>2*1024*1024)throw Error('Oversized file');return{path:path.relative(root,p).split(path.sep).join('/'),content_base64:b.toString('base64'),sha256:hash(b),expected_sha256:null};});
+if(files.length>50||total>4*1024*1024)throw Error('Deployment limits exceeded');
+const manifest={schema_version:1,release_id:args['--release'],requires_release:base.release_id,maintenance:true,maintenance_html_base64:base.maintenance_html_base64,maintenance_html_sha256:base.maintenance_html_sha256,files};
+writeFileSync(args['--output'],JSON.stringify(manifest,null,2)+'\n');
+console.log(JSON.stringify({output:args['--output'],requires_release:base.release_id,files:files.length,total_bytes:total,maintenance_preserved:true,activation:'NOT ACTIVATED. Verify successful server state before publishing this manifest.'},null,2));

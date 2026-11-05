@@ -1,0 +1,6 @@
+node_modules/
+dist/
+*.tar.gz
+deploy-base.json
+deploy.candidate.json
+.DS_Store
